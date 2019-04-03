@@ -53,9 +53,9 @@ class CsgoApi
 				['ip' => $ip, 'port' => $port] = $info;
 
 				foreach ($commands as $com) {
-					[$command, $delay] = $com;
+					[$c, $delay] = $com;
 
-					$this->sendCommandToServer($ip, $port, $command, $delay);
+					$this->sendCommandToServer($ip, $port, $c, $delay);
 				}
 			}
 		}
