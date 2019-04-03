@@ -6,7 +6,7 @@
  * Time: 8:37 PM
  */
 
-namespace hugojf\CsgoApi;
+namespace hugojf\CsgoServerApi;
 
 use Ixudra\Curl\Builder;
 use Ixudra\Curl\CurlService;

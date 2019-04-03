@@ -30,7 +30,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "hugojf\\Providers\\PackageServiceProvider"
+                "hugojf\\CsgoServerApi\\Providers\\PackageServiceProvider"
             ]
         }
     }

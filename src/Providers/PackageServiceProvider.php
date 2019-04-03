@@ -1,6 +1,6 @@
 <?php
 
-namespace hugojf\CsgoApi\Providers;
+namespace hugojf\CsgoServerApi	\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

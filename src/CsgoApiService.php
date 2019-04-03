@@ -1,6 +1,6 @@
 <?php
 
-namespace hugojf\CsgoApi;
+namespace hugojf\CsgoServerApi;
 
 /**
  * Delete this folder and have fun
