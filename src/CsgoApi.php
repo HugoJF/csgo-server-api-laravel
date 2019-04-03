@@ -46,8 +46,8 @@ class CsgoApi
 	{
 		foreach ($this->servers as $server) {
 			if ($info = $this->splitServerData($server)) {
-				list($ip, $port) = $info;
-				
+				['ip' => $ip, 'port' => $port] = $info;
+
 				$this->sendCommandToServer($ip, $port, $command, $delay);
 			}
 		}
