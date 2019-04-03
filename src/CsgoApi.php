@@ -69,24 +69,24 @@ class CsgoApi
 
 	protected function sendToAll($command, $delay)
 	{
-		$key = $this->key;
+		$token = $this->key;
 
 		/** @var Builder $curl */
 		$curl = Curl::to("$this->url/sendAll");
 
-		$curl->withData(compact('command', 'delay', 'key'));
+		$curl->withData(compact('command', 'delay', 'token'));
 
 		$curl->get();
 	}
 
 	protected function sendCommandToServer($ip, $port, $command, $delay)
 	{
-		$key = $this->key;
+		$token = $this->key;
 
 		/** @var Builder $curl */
 		$curl = Curl::to("$this->url/send");
 
-		$curl->withData(compact('ip', 'port', 'command', 'delay', 'key'));
+		$curl->withData(compact('ip', 'port', 'command', 'delay', 'token'));
 
 		$curl->get();
 	}
