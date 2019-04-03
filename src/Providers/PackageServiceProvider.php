@@ -34,6 +34,6 @@ class PackageServiceProvider extends ServiceProvider
 	 */
 	public function provides()
 	{
-		return ['Curl'];
+		return ['CsgoApi'];
 	}
 }
