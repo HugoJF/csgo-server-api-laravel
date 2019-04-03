@@ -28,4 +28,12 @@ class PackageServiceProvider extends ServiceProvider
 			__DIR__ . '/../config/config.php' => config_path('csgo-api.php'),
 		]);
 	}
+
+	/**
+	 * @return array
+	 */
+	public function provides()
+	{
+		return ['Curl'];
+	}
 }
