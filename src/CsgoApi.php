@@ -63,7 +63,7 @@ class CsgoApi
 	public function execute($commands, $delay = 0)
 	{
 		if (!is_array($commands)) {
-			$commands = [$commands, $delay];
+			$commands = [[$commands, $delay]];
 		}
 
 		$this->executeCommandList($commands, $this->servers);
