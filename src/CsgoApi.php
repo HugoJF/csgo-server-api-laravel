@@ -42,10 +42,12 @@ class CsgoApi
 		return $this;
 	}
 
-	public function execute($command, $delay)
+	public function execute($command, $delay = 0)
 	{
 		foreach ($this->servers as $server) {
-			if (list($ip, $port) = $this->splitServerData($server)) {
+			if ($info = $this->splitServerData($server)) {
+				list($ip, $port) = $info;
+				
 				$this->sendCommandToServer($ip, $port, $command, $delay);
 			}
 		}
