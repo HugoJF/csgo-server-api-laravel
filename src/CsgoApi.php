@@ -24,6 +24,13 @@ class CsgoApi
 		$this->key = config('csgo-api.key');
 	}
 
+	public function broadcast()
+	{
+		$this->broadcast = true;
+
+		return $this;
+	}
+
 	public function to($server)
 	{
 		if (!is_array($server)) {
@@ -58,7 +65,7 @@ class CsgoApi
 		}
 	}
 
-	protected function broadcast($command, $delay)
+	protected function sendToAll($command, $delay)
 	{
 		$key = $this->key;
 

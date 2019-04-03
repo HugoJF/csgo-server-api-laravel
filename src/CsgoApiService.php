@@ -10,16 +10,15 @@ class CsgoApiService
 {
 	public static function all()
 	{
-		return 'It works!';
+		$api = new CsgoApi();
+
+		return $api->broadcast();
 	}
 
-	public static function to()
+	public static function to($server)
 	{
+		$api = new CsgoApi();
 
-	}
-
-	public static function send()
-	{
-
+		return $api->to($server);
 	}
 }
