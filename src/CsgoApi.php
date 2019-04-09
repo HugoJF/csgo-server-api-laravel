@@ -15,6 +15,7 @@ use Ixudra\Curl\Facades\Curl;
 class CsgoApi
 {
 	protected $servers = [];
+	protected $commands = [];
 
 	protected $broadcast = false;
 
@@ -55,10 +56,12 @@ class CsgoApi
 	}
 
 	/**
-	 * Executes a list of commands in the set list of servers
+	 * Adds commands to execution list
 	 *
-	 * @param string|array $commands - command list to be executed
-	 * @param int          $delay    - delay in milliseconds when a single command is specified
+	 * @param array|string $commands - commands to be added
+	 * @param int          $delay    - delay in milliseconds $commands is string
+	 *
+	 * @return CsgoApi
 	 */
 	public function execute($commands, $delay = 0)
 	{
@@ -66,7 +69,17 @@ class CsgoApi
 			$commands = [[$commands, $delay]];
 		}
 
-		$this->executeCommandList($commands, $this->servers);
+		$this->commands = array_merge($this->commands, $commands);
+
+		return $this;
+	}
+
+	/**
+	 * Executes a list of commands in the set list of servers
+	 */
+	public function send()
+	{
+		$this->executeCommandList($this->commands, $this->servers);
 	}
 
 	/**
