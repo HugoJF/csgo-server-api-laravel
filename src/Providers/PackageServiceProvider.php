@@ -2,12 +2,12 @@
 
 namespace hugojf\CsgoServerApi    \Providers;
 
-use hugojf\CsgoServerApi\CsgoApi;
 use hugojf\CsgoServerApi\CsgoApiService;
 use Illuminate\Support\ServiceProvider;
 
 class PackageServiceProvider extends ServiceProvider
 {
+	protected $defer = false;
 	/**
 	 * Register bindings in the container.
 	 */

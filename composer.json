@@ -2,7 +2,7 @@
     "name": "hugojf/csgo-server-api",
     "description": "A simple way to communicate with CS:GO servers.",
     "type": "library",
-    "version": "1.0.1-dev",
+    "version": "1.0.2-dev",
     "require": {
         "laravel/framework": "^5.7",
         "ixudra/curl": "6.*"
@@ -19,19 +19,22 @@
     ],
     "autoload": {
         "psr-4": {
-            "hugojf\\": "src/"
+            "hugojf\\CsgoServerApi\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "hugojf\\Tests\\": "tests/"
+            "hugojf\\CsgoServerApi\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
                 "hugojf\\CsgoServerApi\\Providers\\PackageServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "CsgoApi": "hugojf\\CsgoServerApi\\Facades\\CsgoApi"
+            }
         }
     }
 }

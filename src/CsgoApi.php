@@ -9,7 +9,6 @@
 namespace hugojf\CsgoServerApi;
 
 use Ixudra\Curl\Builder;
-use Ixudra\Curl\CurlService;
 use Ixudra\Curl\Facades\Curl;
 
 class CsgoApi
@@ -18,6 +17,9 @@ class CsgoApi
 	protected $commands = [];
 
 	protected $broadcast = false;
+
+	private $key;
+	private $url;
 
 	public function __construct()
 	{
@@ -75,11 +77,25 @@ class CsgoApi
 	}
 
 	/**
+	 * Execute command alias
+	 *
+	 * @param array|string $commands - commands to be added
+	 * @param int          $delay    - delay in milliseconds $commands is string
+	 *
+	 * @return CsgoApi
+	 */
+	public function commands($commands, $delay = 0)
+	{
+		return $this->execute($commands, $delay);
+	}
+
+
+	/**
 	 * Executes a list of commands in the set list of servers
 	 */
 	public function send()
 	{
-		$this->executeCommandList($this->commands, $this->servers);
+		return $this->executeCommandList($this->commands, $this->servers);
 	}
 
 	/**
@@ -87,18 +103,24 @@ class CsgoApi
 	 *
 	 * @param array $commands - list of commands to be executed
 	 * @param array $servers  - list of servers to be executed on
+	 *
+	 * @return mixed
 	 */
 	protected function executeCommandList($commands, $servers)
 	{
+		$responses = [];
+
 		foreach ($commands as $com) {
 			[$command, $delay] = $com;
 
 			if ($this->broadcast) {
-				$this->sendToAll($command, $delay);
+				$responses[ $command ] = $this->sendToAll($command, $delay);
 			} else {
-				$this->executeOnServers($command, $delay, $servers);
+				$responses[ $command ] = $this->executeOnServers($command, $delay, $servers);
 			}
 		}
+
+		return $responses;
 	}
 
 	/**
@@ -107,16 +129,22 @@ class CsgoApi
 	 * @param string  $command - command to be executed
 	 * @param integer $delay   - delay in milliseconds
 	 * @param array   $servers - server list
+	 *
+	 * @return array
 	 */
 	protected function executeOnServers($command, $delay, $servers)
 	{
+		$responses = [];
+
 		foreach ($servers as $server) {
 			if ($info = $this->splitServerData($server)) {
 				['ip' => $ip, 'port' => $port] = $info;
 
-				$this->sendCommandToServer($ip, $port, $command, $delay);
+				$responses[ $info ] = $this->sendCommandToServer($ip, $port, $command, $delay)['response'];
 			}
 		}
+
+		return $responses;
 	}
 
 	/**
@@ -124,6 +152,8 @@ class CsgoApi
 	 *
 	 * @param string  $command - command to be executed
 	 * @param integer $delay   - delay in milliseconds
+	 *
+	 * @return string
 	 */
 	protected function sendToAll($command, $delay)
 	{
@@ -134,7 +164,7 @@ class CsgoApi
 
 		$curl->withData(compact('command', 'delay', 'token'));
 
-		$curl->get();
+		return $curl->asJson(true)->get();
 	}
 
 	/**
@@ -144,6 +174,8 @@ class CsgoApi
 	 * @param integer $port    - CS:GO server port
 	 * @param string  $command - Command to execute
 	 * @param integer $delay   - Delay to execute command in milliseconds
+	 *
+	 * @return array
 	 */
 	protected function sendCommandToServer($ip, $port, $command, $delay)
 	{
@@ -154,7 +186,7 @@ class CsgoApi
 
 		$curl->withData(compact('ip', 'port', 'command', 'delay', 'token'));
 
-		$curl->get();
+		return $curl->asJson(true)->get();
 	}
 
 	/**
