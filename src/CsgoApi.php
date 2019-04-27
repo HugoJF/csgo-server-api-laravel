@@ -140,7 +140,7 @@ class CsgoApi
 			if ($info = $this->splitServerData($server)) {
 				['ip' => $ip, 'port' => $port] = $info;
 
-				$responses[ $info ] = $this->sendCommandToServer($ip, $port, $command, $delay)['response'];
+				$responses[ $server ] = $this->sendCommandToServer($ip, $port, $command, $delay);
 			}
 		}
 
@@ -153,7 +153,7 @@ class CsgoApi
 	 * @param string  $command - command to be executed
 	 * @param integer $delay   - delay in milliseconds
 	 *
-	 * @return string
+	 * @return array|bool
 	 */
 	protected function sendToAll($command, $delay)
 	{
@@ -164,7 +164,13 @@ class CsgoApi
 
 		$curl->withData(compact('command', 'delay', 'token'));
 
-		return $curl->asJson(true)->get();
+		$res = $curl->asJson(true)->get();
+
+		if (array_key_exists('response', $res)) {
+			return $res['response'];
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -175,7 +181,7 @@ class CsgoApi
 	 * @param string  $command - Command to execute
 	 * @param integer $delay   - Delay to execute command in milliseconds
 	 *
-	 * @return array
+	 * @return array|bool
 	 */
 	protected function sendCommandToServer($ip, $port, $command, $delay)
 	{
@@ -186,7 +192,13 @@ class CsgoApi
 
 		$curl->withData(compact('ip', 'port', 'command', 'delay', 'token'));
 
-		return $curl->asJson(true)->get();
+		$res = $curl->asJson(true)->get();
+
+		if (array_key_exists('response', $res)) {
+			return $res['response'];
+		} else {
+			return false;
+		}
 	}
 
 	/**
