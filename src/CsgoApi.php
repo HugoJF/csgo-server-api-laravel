@@ -17,6 +17,7 @@ class CsgoApi
 	protected $commands = [];
 
 	protected $broadcast = false;
+	protected $waitResponse = false;
 
 	private $key;
 	private $url;
@@ -58,17 +59,27 @@ class CsgoApi
 	}
 
 	/**
+	 * Wait for API responses
+	 */
+	public function wait()
+	{
+		$this->waitResponse = true;
+	}
+
+	/**
 	 * Adds commands to execution list
 	 *
 	 * @param array|string $commands - commands to be added
 	 * @param int          $delay    - delay in milliseconds $commands is string
 	 *
+	 * @param bool         $wait     - wait for server response
+	 *
 	 * @return CsgoApi
 	 */
-	public function execute($commands, $delay = 0)
+	public function execute($commands, $delay = 0, $wait = false)
 	{
 		if (!is_array($commands)) {
-			$commands = [[$commands, $delay]];
+			$commands = [[$commands, $delay, $wait]];
 		}
 
 		$this->commands = array_merge($this->commands, $commands);
@@ -82,11 +93,13 @@ class CsgoApi
 	 * @param array|string $commands - commands to be added
 	 * @param int          $delay    - delay in milliseconds $commands is string
 	 *
+	 * @param bool         $wait     - wait for server response
+	 *
 	 * @return CsgoApi
 	 */
-	public function commands($commands, $delay = 0)
+	public function commands($commands, $delay = 0, $wait = false)
 	{
-		return $this->execute($commands, $delay);
+		return $this->execute($commands, $delay, $wait);
 	}
 
 
@@ -111,12 +124,12 @@ class CsgoApi
 		$responses = [];
 
 		foreach ($commands as $com) {
-			[$command, $delay] = $com;
+			[$command, $delay, $wait] = $com;
 
 			if ($this->broadcast) {
-				$responses[ $command ] = $this->sendToAll($command, $delay);
+				$responses[ $command ] = $this->sendToAll($command, $delay, $wait);
 			} else {
-				$responses[ $command ] = $this->executeOnServers($command, $delay, $servers);
+				$responses[ $command ] = $this->executeOnServers($command, $delay, $servers, $wait);
 			}
 		}
 
@@ -129,10 +142,11 @@ class CsgoApi
 	 * @param string  $command - command to be executed
 	 * @param integer $delay   - delay in milliseconds
 	 * @param array   $servers - server list
+	 * @param bool    $wait    - wait for server response
 	 *
 	 * @return array
 	 */
-	protected function executeOnServers($command, $delay, $servers)
+	protected function executeOnServers($command, $delay, $servers, $wait = null)
 	{
 		$responses = [];
 
@@ -140,7 +154,7 @@ class CsgoApi
 			if ($info = $this->splitServerData($server)) {
 				['ip' => $ip, 'port' => $port] = $info;
 
-				$responses[ $server ] = $this->sendCommandToServer($ip, $port, $command, $delay);
+				$responses[ $server ] = $this->sendCommandToServer($ip, $port, $command, $delay, $wait);
 			}
 		}
 
@@ -150,19 +164,27 @@ class CsgoApi
 	/**
 	 * Send a command to all servers registered in the API
 	 *
-	 * @param string  $command - command to be executed
-	 * @param integer $delay   - delay in milliseconds
+	 * @param string  $command         - command to be executed
+	 * @param integer $delay           - delay in milliseconds
+	 * @param null    $waitForResponse - wait for server response
 	 *
 	 * @return array|bool
 	 */
-	protected function sendToAll($command, $delay)
+	protected function sendToAll($command, $delay, $waitForResponse = null)
 	{
 		$token = $this->key;
+		if ($waitForResponse === null) {
+			$wait = $this->waitResponse;
+		} else {
+			$wait = $waitForResponse;
+		}
+
+		$wait = $wait ? 'true' : '';
 
 		/** @var Builder $curl */
 		$curl = Curl::to("$this->url/sendAll");
 
-		$curl->withData(compact('command', 'delay', 'token'));
+		$curl->withData(compact('command', 'delay', 'token', 'wait'));
 
 		$res = $curl->asJson(true)->get();
 
@@ -176,21 +198,30 @@ class CsgoApi
 	/**
 	 * Sends a command to specified CS:GO server via API
 	 *
-	 * @param string  $ip      - CS:GO server IP
-	 * @param integer $port    - CS:GO server port
-	 * @param string  $command - Command to execute
-	 * @param integer $delay   - Delay to execute command in milliseconds
+	 * @param string  $ip              - CS:GO server IP
+	 * @param integer $port            - CS:GO server port
+	 * @param string  $command         - Command to execute
+	 * @param integer $delay           - Delay to execute command in milliseconds
+	 * @param boolean $waitForResponse - Wait for server response
 	 *
 	 * @return array|bool
 	 */
-	protected function sendCommandToServer($ip, $port, $command, $delay)
+	protected function sendCommandToServer($ip, $port, $command, $delay, $waitForResponse = null)
 	{
 		$token = $this->key;
+
+		if ($waitForResponse === null) {
+			$wait = $waitForResponse;
+		} else {
+			$wait = $this->waitResponse;
+		}
+
+		$wait = $wait ? 'true' : '';
 
 		/** @var Builder $curl */
 		$curl = Curl::to("$this->url/send");
 
-		$curl->withData(compact('ip', 'port', 'command', 'delay', 'token'));
+		$curl->withData(compact('ip', 'port', 'command', 'delay', 'token', 'wait'));
 
 		$res = $curl->asJson(true)->get();
 
