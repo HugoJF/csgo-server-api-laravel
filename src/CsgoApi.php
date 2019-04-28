@@ -64,6 +64,8 @@ class CsgoApi
 	public function wait()
 	{
 		$this->waitResponse = true;
+
+		return $this;
 	}
 
 	/**
