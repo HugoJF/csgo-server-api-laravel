@@ -82,6 +82,10 @@ class CsgoApi
 	{
 		if (!is_array($commands)) {
 			$commands = [[$commands, $delay, $wait]];
+		} else {
+			$commands = collect($commands)->map(function ($c) use ($delay, $wait) {
+				return $c + ['', $delay, $wait];
+			})->toArray();
 		}
 
 		$this->commands = array_merge($this->commands, $commands);
