@@ -108,7 +108,6 @@ class CsgoApi
 		return $this->execute($commands, $delay, $wait);
 	}
 
-
 	/**
 	 * Executes a list of commands in the set list of servers
 	 */
@@ -193,6 +192,9 @@ class CsgoApi
 		$curl->withData(compact('command', 'delay', 'token', 'wait'));
 
 		$res = $curl->asJson(true)->get();
+
+		if (!is_array($res))
+			return false;
 
 		if (array_key_exists('response', $res)) {
 			return $res['response'];
