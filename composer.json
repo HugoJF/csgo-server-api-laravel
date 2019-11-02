@@ -2,7 +2,6 @@
     "name": "hugojf/csgo-server-api-laravel",
     "description": "A simple way to communicate with CS:GO servers.",
     "type": "library",
-    "version": "2.0.0-dev",
     "require": {
         "laravel/framework": "^5.7",
         "ixudra/curl": "6.*",
