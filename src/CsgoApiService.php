@@ -8,17 +8,13 @@ namespace hugojf\CsgoServerApi;
  */
 class CsgoApiService
 {
-	public static function all()
+	public static function broadcast()
 	{
-		$api = new CsgoApi();
-
-		return $api->broadcast();
+		return (new CsgoApi())->broadcast();
 	}
 
-	public static function to($server)
+	public static function direct()
 	{
-		$api = new CsgoApi();
-
-		return $api->to($server);
+		return (new CsgoApi())->direct();
 	}
 }
