@@ -1,0 +1,17 @@
+sudo: required
+dist: trusty
+language: php
+
+php:
+  - 7.3
+
+cache:
+  directories:
+    - vendor
+
+before_script:
+  - composer self-update
+  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
+
+script:
+  - phpunit
