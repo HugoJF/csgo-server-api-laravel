@@ -9,6 +9,11 @@ use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 class ExecTest extends OrchestraTestCase
 {
+	public function setUp(): void
+	{
+		//
+	}
+
 	protected function getPackageProviders($app)
 	{
 		return [PackageServiceProvider::class, CurlServiceProvider::class];
