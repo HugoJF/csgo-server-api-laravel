@@ -9,12 +9,12 @@ class CommandList extends BaseList
 	protected $itemClass = Command::class;
 
 	/**
-	 * @param $item
+	 * @param array $params
 	 *
 	 * @return Command
 	 */
-	function buildItem($item)
+	protected function buildItem(...$params)
 	{
-		return new Command($item);
+		return new Command(...func_get_args());
 	}
 }

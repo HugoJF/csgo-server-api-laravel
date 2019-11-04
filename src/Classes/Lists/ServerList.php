@@ -10,13 +10,13 @@ class ServerList extends BaseList
 	protected $itemClass = Server::class;
 
 	/**
-	 * @param $item
+	 * @param array $params
 	 *
 	 * @return Server
 	 * @throws InvalidAddressException
 	 */
-	function buildItem($item)
+	protected function buildItem(...$params)
 	{
-		return new Server($item);
+		return new Server(...func_get_args());
 	}
 }

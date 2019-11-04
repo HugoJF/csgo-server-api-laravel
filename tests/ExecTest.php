@@ -5,6 +5,8 @@ namespace hugojf\Tests;
 use Exception;
 use hugojf\CsgoServerApi\Classes\Api;
 use hugojf\CsgoServerApi\Classes\Command;
+use hugojf\CsgoServerApi\Classes\Lists\CommandList;
+use hugojf\CsgoServerApi\Classes\Lists\ServerList;
 use hugojf\CsgoServerApi\Classes\Senders\BroadcastSender;
 use hugojf\CsgoServerApi\Classes\Senders\DirectSender;
 use hugojf\CsgoServerApi\Classes\Server;
@@ -207,4 +209,49 @@ class ExecTest extends OrchestraTestCase
 		$this->assertEquals('27001', $server->getPort());
 	}
 
+	public function testCommandList()
+	{
+		$commandList = new CommandList();
+
+		$commandList->addItem(new Command('stats', 1000, false));
+		$commandList->addItem([
+			new Command('stats', 1500, false),
+			new Command('status', 1500, false),
+		]);
+
+		$commandList->addItem('stats', 1500, false);
+
+		$commandList->addItem([
+			['stats', '1500', false],
+			['status', '1500', false],
+		]);
+
+		$this->assertEquals(6, count($commandList->getList()));
+	}
+
+	public function testServerList()
+	{
+		$serverList = new ServerList();
+
+		$serverList->addItem(new Server('177.54.150.15:27001'));
+		$serverList->addItem([
+			new Server('177.54.150.15:27001'),
+			new Server('177.54.150.15:27002'),
+		]);
+
+		$serverList->addItem('177.54.150.15:27002');
+		$serverList->addItem([
+			'177.54.150.15:27001',
+			'177.54.150.15:27002',
+		]);
+		$serverList->addItem('177.54.150.15', 27002);
+		$serverList->addItem([
+			['177.54.150.15', 27001],
+			['177.54.150.15', 27002],
+		]);
+
+		$list = $serverList->getList();
+
+		$this->assertEquals(9, count($list));
+	}
 }
