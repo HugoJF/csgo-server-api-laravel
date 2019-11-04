@@ -12,9 +12,13 @@ use hugojf\CsgoServerApi\Classes\Senders\DirectSender;
 use hugojf\CsgoServerApi\Classes\Server;
 use hugojf\CsgoServerApi\Classes\Summaries\ByCommandSummary;
 use hugojf\CsgoServerApi\Classes\Summaries\ByServerSummary;
+use hugojf\CsgoServerApi\Facades\CsgoApi;
 use hugojf\CsgoServerApi\InvalidAddressException;
 use hugojf\CsgoServerApi\Providers\PackageServiceProvider;
+use Ixudra\Curl\Builder;
 use Ixudra\Curl\CurlServiceProvider;
+use Ixudra\Curl\Facades\Curl;
+use Mockery;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 class ExecTest extends OrchestraTestCase
@@ -24,6 +28,7 @@ class ExecTest extends OrchestraTestCase
 		return [
 			PackageServiceProvider::class,
 			CurlServiceProvider::class,
+			PackageServiceProvider::class,
 		];
 	}
 
@@ -253,5 +258,33 @@ class ExecTest extends OrchestraTestCase
 		$list = $serverList->getList();
 
 		$this->assertEquals(9, count($list));
+	}
+
+	public function testFacade()
+	{
+		$builder = Mockery::mock(Builder::class)->makePartial();
+
+		$builder->shouldReceive('get')->once()->andReturn(['error' => false, 'response' => 'response-1']);
+		$builder->shouldReceive('get')->once()->andReturn(['error' => false, 'response' => 'response-2']);
+
+		Curl::shouldReceive('to')->twice()->andReturn($builder);
+
+		$response = CsgoApi::direct()->addCommand([
+			new Command('stats', 1500, false),
+			new Command('status', 1500, false),
+		])->addServer(
+			new Server('177.54.150.15:27001')
+		)->send();
+
+		$expected = [
+			"stats"  => [
+				"177.54.150.15:27001" => "response-1",
+			],
+			"status" => [
+				"177.54.150.15:27001" => "response-2",
+			],
+		];
+
+		$this->assertEquals($expected, $response);
 	}
 }

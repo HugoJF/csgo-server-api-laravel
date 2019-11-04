@@ -7,18 +7,17 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false"
-         syntaxCheck="false">
+         stopOnFailure="false">
     <logging>
         <log type="coverage-clover" target="build/logs/clover.xml"/>
     </logging>
     <filter>
         <whitelist>
             <directory>./src/</directory>
+            <exclude>
+                <directory>./src/config/</directory>
+            </exclude>
         </whitelist>
-        <exclude>
-            <directory>./src/config/</directory>
-        </exclude>
     </filter>
     <testsuites>
         <testsuite name="Optimus\LaravelBoilerplate Test Suite">
