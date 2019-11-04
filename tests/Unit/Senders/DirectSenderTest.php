@@ -11,7 +11,7 @@ use hugojf\CsgoServerApi\Tests\Base;
 
 class DirectSenderTest extends Base
 {
-	public function testDirectSender()
+	public function test_direct_sender()
 	{
 		$this->mock(Api::class, function ($mock) {
 			$mock->shouldReceive('send')->once()->andReturn('status-1');

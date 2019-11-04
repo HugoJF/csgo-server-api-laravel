@@ -8,7 +8,7 @@ use hugojf\CsgoServerApi\Tests\Base;
 
 class CommandListTest extends Base
 {
-	public function testCommandList()
+	public function test_command_list_will_add_new_commands()
 	{
 		$commandList = new CommandList();
 

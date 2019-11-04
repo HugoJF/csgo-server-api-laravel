@@ -11,7 +11,7 @@ use Mockery;
 
 class BroadcastTest extends Base
 {
-	public function testFacadeBroadcastMethod()
+	public function test_facade_broadcast_method()
 	{
 		$builder = Mockery::mock(Builder::class)->makePartial();
 

@@ -12,7 +12,7 @@ use Mockery;
 
 class DirectTest extends Base
 {
-	public function testFacadeDirectMethod()
+	public function test_facade_direct_method()
 	{
 		$builder = Mockery::mock(Builder::class)->makePartial();
 

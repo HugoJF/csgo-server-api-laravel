@@ -11,7 +11,7 @@ use hugojf\CsgoServerApi\Tests\Base;
 
 class BroadcastSenderTest extends Base
 {
-	public function testBroadcastSender()
+	public function test_broadcast_sender()
 	{
 		$this->mock(Api::class, function ($mock) {
 			$mock->shouldReceive('sendToAll')->once()->andReturn([
@@ -47,7 +47,7 @@ class BroadcastSenderTest extends Base
 		$this->assertEquals($expected, $summary);
 	}
 
-	public function testBroadcastSenderWillRaiseExceptionWhenInvalidResponseIsReturned()
+	public function test_broadcast_sender_will_raise_exception_when_invalid_response_is_returned()
 	{
 		$this->mock(Api::class, function ($mock) {
 			$mock->shouldReceive('sendToAll')->once()->andReturn(null);

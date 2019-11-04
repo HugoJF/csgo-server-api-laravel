@@ -8,7 +8,7 @@ use hugojf\CsgoServerApi\Tests\Base;
 
 class ServerTest extends Base
 {
-	public function testServerCanBeInstantiatedByAddress()
+	public function test_server_can_be_instantiated_by_address()
 	{
 		$address = '177.54.150.15:27001';
 
@@ -18,7 +18,7 @@ class ServerTest extends Base
 		$this->assertEquals('27001', $server->getPort());
 	}
 
-	public function testServerCanBeInstantiatedByIpAndPort()
+	public function test_server_can_be_instantiated_by_ip_and_port()
 	{
 		$server = new Server('177.54.150.15', 27001);
 
@@ -26,7 +26,7 @@ class ServerTest extends Base
 		$this->assertEquals('27001', $server->getPort());
 	}
 
-	public function testServerWillRaiseExceptionOnInvalidAddress()
+	public function test_server_will_raise_exception_on_invalid_address()
 	{
 		$this->expectException(InvalidAddressException::class);
 

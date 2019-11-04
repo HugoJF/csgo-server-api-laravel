@@ -10,7 +10,7 @@ use hugojf\CsgoServerApi\Tests\Base;
 
 class SummaryTest extends Base
 {
-	public function testByServerSummary()
+	public function test_by_server_summary()
 	{
 		$byServer = new ByServerSummary();
 
@@ -33,7 +33,7 @@ class SummaryTest extends Base
 		$this->assertEquals($expected, $byServer->getSummary());
 	}
 
-	public function testByCommandSummary()
+	public function test_by_command_summary()
 	{
 		$byCommand = new ByCommandSummary();
 

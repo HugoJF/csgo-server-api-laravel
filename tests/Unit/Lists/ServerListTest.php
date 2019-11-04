@@ -8,7 +8,7 @@ use hugojf\CsgoServerApi\Tests\Base;
 
 class ServerListTest extends Base
 {
-	public function testServerList()
+	public function test_server_list_will_add_new_servers()
 	{
 		$serverList = new ServerList();
 
