@@ -16,6 +16,9 @@
         <whitelist>
             <directory>./src/</directory>
         </whitelist>
+        <exclude>
+            <directory>./src/config/</directory>
+        </exclude>
     </filter>
     <testsuites>
         <testsuite name="Optimus\LaravelBoilerplate Test Suite">
