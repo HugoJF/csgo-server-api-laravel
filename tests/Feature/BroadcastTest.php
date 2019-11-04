@@ -9,7 +9,7 @@ use Ixudra\Curl\Builder;
 use Ixudra\Curl\Facades\Curl;
 use Mockery;
 
-class Broadcast extends Base
+class BroadcastTest extends Base
 {
 	public function testFacadeBroadcastMethod()
 	{

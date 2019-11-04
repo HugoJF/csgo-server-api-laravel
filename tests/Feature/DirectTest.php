@@ -5,11 +5,12 @@ namespace hugojf\CsgoServerApi\Tests\Feature;
 use hugojf\CsgoServerApi\Classes\Command;
 use hugojf\CsgoServerApi\Classes\Server;
 use hugojf\CsgoServerApi\Facades\CsgoApi;
+use hugojf\CsgoServerApi\Tests\Base;
 use Ixudra\Curl\Builder;
 use Ixudra\Curl\Facades\Curl;
 use Mockery;
 
-class DirectTest
+class DirectTest extends Base
 {
 	public function testFacadeDirectMethod()
 	{

@@ -1,302 +1,273 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1572750693">
-    <project timestamp="1572750693">
-        <package name="hugojf\CsgoServerApi\Classes">
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Api.php">
-                <class name="hugojf\CsgoServerApi\Classes\Api" namespace="hugojf\CsgoServerApi\Classes">
-                    <metrics complexity="6" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="0" elements="26" coveredelements="0"/>
-                </class>
-                <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="2.00" count="0"/>
-                <line num="15" type="stmt" count="0"/>
-                <line num="16" type="stmt" count="0"/>
-                <line num="17" type="stmt" count="0"/>
-                <line num="27" type="method" name="send" visibility="public" complexity="2" crap="6.00" count="0"/>
-                <line num="29" type="stmt" count="0"/>
-                <line num="30" type="stmt" count="0"/>
-                <line num="31" type="stmt" count="0"/>
-                <line num="32" type="stmt" count="0"/>
-                <line num="33" type="stmt" count="0"/>
-                <line num="34" type="stmt" count="0"/>
-                <line num="37" type="stmt" count="0"/>
-                <line num="39" type="stmt" count="0"/>
-                <line num="41" type="stmt" count="0"/>
-                <line num="43" type="stmt" count="0"/>
-                <line num="53" type="method" name="sendToAll" visibility="public" complexity="2" crap="6.00" count="0"/>
-                <line num="55" type="stmt" count="0"/>
-                <line num="56" type="stmt" count="0"/>
-                <line num="57" type="stmt" count="0"/>
-                <line num="58" type="stmt" count="0"/>
-                <line num="61" type="stmt" count="0"/>
-                <line num="63" type="stmt" count="0"/>
-                <line num="65" type="stmt" count="0"/>
-                <line num="67" type="stmt" count="0"/>
-                <line num="75" type="method" name="processResponse" visibility="protected" complexity="1" crap="2.00" count="0"/>
-                <line num="77" type="stmt" count="0"/>
-                <metrics loc="78" ncloc="56" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="0" elements="26" coveredelements="0"/>
-            </file>
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Command.php">
-                <class name="hugojf\CsgoServerApi\Classes\Command" namespace="hugojf\CsgoServerApi\Classes">
-                    <metrics complexity="5" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="6" elements="13" coveredelements="9"/>
-                </class>
-                <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-                <line num="22" type="stmt" count="8"/>
-                <line num="23" type="stmt" count="8"/>
-                <line num="24" type="stmt" count="8"/>
-                <line num="25" type="stmt" count="8"/>
-                <line num="27" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="8"/>
-                <line num="29" type="stmt" count="8"/>
-                <line num="35" type="method" name="getCommand" visibility="public" complexity="1" crap="1" count="8"/>
-                <line num="37" type="stmt" count="8"/>
-                <line num="43" type="method" name="getDelay" visibility="public" complexity="1" crap="2.00" count="0"/>
-                <line num="45" type="stmt" count="0"/>
-                <line num="51" type="method" name="getWait" visibility="public" complexity="1" crap="2.00" count="0"/>
-                <line num="53" type="stmt" count="0"/>
-                <metrics loc="54" ncloc="36" classes="1" methods="5" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="6" elements="13" coveredelements="9"/>
-            </file>
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Server.php">
-                <class name="hugojf\CsgoServerApi\Classes\Server" namespace="hugojf\CsgoServerApi\Classes">
-                    <metrics complexity="8" methods="6" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="9" elements="22" coveredelements="10"/>
-                </class>
-                <line num="20" type="method" name="__construct" visibility="public" complexity="2" crap="2.06" count="6"/>
-                <line num="22" type="stmt" count="6"/>
-                <line num="23" type="stmt" count="0"/>
-                <line num="25" type="stmt" count="6"/>
-                <line num="26" type="stmt" count="6"/>
-                <line num="28" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="6"/>
-                <line num="30" type="stmt" count="6"/>
-                <line num="39" type="method" name="fromIpAndPort" visibility="private" complexity="1" crap="2.00" count="0"/>
-                <line num="41" type="stmt" count="0"/>
-                <line num="42" type="stmt" count="0"/>
-                <line num="43" type="stmt" count="0"/>
-                <line num="45" type="method" name="fromAddress" visibility="private" complexity="2" crap="2.02" count="6"/>
-                <line num="47" type="stmt" count="6"/>
-                <line num="49" type="stmt" count="6"/>
-                <line num="50" type="stmt" count="0"/>
-                <line num="52" type="stmt" count="6"/>
-                <line num="53" type="stmt" count="6"/>
-                <line num="54" type="stmt" count="6"/>
-                <line num="59" type="method" name="getIp" visibility="public" complexity="1" crap="2.00" count="0"/>
-                <line num="61" type="stmt" count="0"/>
-                <line num="67" type="method" name="getPort" visibility="public" complexity="1" crap="2.00" count="0"/>
-                <line num="69" type="stmt" count="0"/>
-                <metrics loc="71" ncloc="51" classes="1" methods="6" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="9" elements="22" coveredelements="10"/>
-            </file>
-        </package>
-        <package name="hugojf\CsgoServerApi\Classes\Lists">
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Lists/BaseList.php">
-                <class name="hugojf\CsgoServerApi\Classes\Lists\BaseList" namespace="hugojf\CsgoServerApi\Classes\Lists">
-                    <metrics complexity="6" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
-                </class>
-                <line num="14" type="method" name="addItem" visibility="public" complexity="4" crap="4" count="4"/>
-                <line num="17" type="stmt" count="4"/>
-                <line num="18" type="stmt" count="4"/>
-                <line num="22" type="stmt" count="4"/>
-                <line num="23" type="stmt" count="4"/>
-                <line num="26" type="stmt" count="4"/>
-                <line num="28" type="stmt" count="4"/>
-                <line num="31" type="method" name="getList" visibility="public" complexity="1" crap="1" count="4"/>
-                <line num="33" type="stmt" count="4"/>
-                <metrics loc="34" ncloc="28" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
-            </file>
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Lists/CommandList.php">
-                <class name="hugojf\CsgoServerApi\Classes\Lists\CommandList" namespace="hugojf\CsgoServerApi\Classes\Lists">
-                    <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
-                </class>
-                <line num="16" type="method" name="buildItem" complexity="1" crap="2.00" count="0"/>
-                <line num="18" type="stmt" count="0"/>
-                <metrics loc="19" ncloc="14" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
-            </file>
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Lists/ServerList.php">
-                <class name="hugojf\CsgoServerApi\Classes\Lists\ServerList" namespace="hugojf\CsgoServerApi\Classes\Lists">
-                    <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
-                </class>
-                <line num="18" type="method" name="buildItem" complexity="1" crap="2.00" count="0"/>
-                <line num="20" type="stmt" count="0"/>
-                <metrics loc="21" ncloc="15" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
-            </file>
-        </package>
-        <package name="hugojf\CsgoServerApi\Classes\Senders">
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Senders/BaseSender.php">
-                <class name="hugojf\CsgoServerApi\Classes\Senders\BaseSender" namespace="hugojf\CsgoServerApi\Classes\Senders">
-                    <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
-                </class>
-                <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="4"/>
-                <line num="19" type="stmt" count="4"/>
-                <line num="20" type="stmt" count="4"/>
-                <line num="21" type="stmt" count="4"/>
-                <metrics loc="23" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
-            </file>
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Senders/BroadcastSender.php">
-                <class name="hugojf\CsgoServerApi\Classes\Senders\BroadcastSender" namespace="hugojf\CsgoServerApi\Classes\Senders">
-                    <metrics complexity="6" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="11" elements="15" coveredelements="13"/>
-                </class>
-                <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
-                <line num="16" type="stmt" count="2"/>
-                <line num="17" type="stmt" count="2"/>
-                <line num="18" type="stmt" count="2"/>
-                <line num="20" type="method" name="send" visibility="public" complexity="2" crap="2" count="2"/>
-                <line num="22" type="stmt" count="2"/>
-                <line num="23" type="stmt" count="2"/>
-                <line num="24" type="stmt" count="2"/>
-                <line num="27" type="stmt" count="2"/>
-                <line num="30" type="method" name="handleResponse" visibility="protected" complexity="3" crap="3.07" count="2"/>
-                <line num="32" type="stmt" count="2"/>
-                <line num="33" type="stmt" count="0"/>
-                <line num="35" type="stmt" count="2"/>
-                <line num="36" type="stmt" count="2"/>
-                <line num="38" type="stmt" count="2"/>
-                <metrics loc="38" ncloc="38" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="11" elements="15" coveredelements="13"/>
-            </file>
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Senders/DirectSender.php">
-                <class name="hugojf\CsgoServerApi\Classes\Senders\DirectSender" namespace="hugojf\CsgoServerApi\Classes\Senders">
-                    <metrics complexity="6" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="16" coveredelements="16"/>
-                </class>
-                <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
-                <line num="19" type="stmt" count="2"/>
-                <line num="21" type="stmt" count="2"/>
-                <line num="22" type="stmt" count="2"/>
-                <line num="23" type="stmt" count="2"/>
-                <line num="25" type="method" name="send" visibility="public" complexity="2" crap="2" count="2"/>
-                <line num="27" type="stmt" count="2"/>
-                <line num="28" type="stmt" count="2"/>
-                <line num="31" type="stmt" count="2"/>
-                <line num="34" type="method" name="executeOnServers" visibility="protected" complexity="2" crap="2" count="2"/>
-                <line num="36" type="stmt" count="2"/>
-                <line num="37" type="stmt" count="2"/>
-                <line num="38" type="stmt" count="2"/>
-                <line num="40" type="stmt" count="2"/>
-                <line num="48" type="method" name="execute" visibility="public" complexity="1" crap="1" count="2"/>
-                <line num="50" type="stmt" count="2"/>
-                <metrics loc="51" ncloc="45" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="16" coveredelements="16"/>
-            </file>
-        </package>
-        <package name="hugojf\CsgoServerApi\Classes\Summaries">
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Summaries/ByCommandSummary.php">
-                <class name="hugojf\CsgoServerApi\Classes\Summaries\ByCommandSummary" namespace="hugojf\CsgoServerApi\Classes\Summaries">
-                    <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
-                </class>
-                <line num="11" type="method" name="attach" visibility="public" complexity="1" crap="1" count="2"/>
-                <line num="13" type="stmt" count="2"/>
-                <line num="14" type="stmt" count="2"/>
-                <line num="16" type="method" name="getSummary" visibility="public" complexity="1" crap="1" count="2"/>
-                <line num="18" type="stmt" count="2"/>
-                <metrics loc="19" ncloc="19" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
-            </file>
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Summaries/ByServerSummary.php">
-                <class name="hugojf\CsgoServerApi\Classes\Summaries\ByServerSummary" namespace="hugojf\CsgoServerApi\Classes\Summaries">
-                    <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
-                </class>
-                <line num="11" type="method" name="attach" visibility="public" complexity="1" crap="1" count="6"/>
-                <line num="13" type="stmt" count="6"/>
-                <line num="14" type="stmt" count="6"/>
-                <line num="16" type="method" name="getSummary" visibility="public" complexity="1" crap="1" count="6"/>
-                <line num="18" type="stmt" count="6"/>
-                <metrics loc="19" ncloc="19" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
-            </file>
-        </package>
-        <file name="/home/vagrant/csgo-server-api-laravel/src/Contracts/CommandExecutor.php">
-            <metrics loc="14" ncloc="14" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-        </file>
-        <file name="/home/vagrant/csgo-server-api-laravel/src/Contracts/Summary.php">
-            <metrics loc="9" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-        </file>
-        <package name="hugojf\CsgoServerApi">
-            <file name="/home/vagrant/csgo-server-api-laravel/src/CsgoApi.php">
-                <class name="hugojf\CsgoServerApi\CsgoApi" namespace="hugojf\CsgoServerApi">
-                    <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="8" coveredelements="0"/>
-                </class>
-                <line num="10" type="method" name="broadcast" visibility="public" complexity="1" crap="2.00" count="0"/>
-                <line num="11" type="stmt" count="0"/>
-                <line num="12" type="stmt" count="0"/>
-                <line num="13" type="stmt" count="0"/>
-                <line num="15" type="method" name="direct" visibility="public" complexity="1" crap="2.00" count="0"/>
-                <line num="16" type="stmt" count="0"/>
-                <line num="17" type="stmt" count="0"/>
-                <line num="18" type="stmt" count="0"/>
-                <metrics loc="18" ncloc="18" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="8" coveredelements="0"/>
-            </file>
-            <file name="/home/vagrant/csgo-server-api-laravel/src/CsgoApiService.php">
-                <class name="hugojf\CsgoServerApi\CsgoApiService" namespace="hugojf\CsgoServerApi">
-                    <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="8" coveredelements="0"/>
-                </class>
-                <line num="11" type="method" name="broadcast" visibility="public" complexity="1" crap="2.00" count="0"/>
-                <line num="12" type="stmt" count="0"/>
-                <line num="13" type="stmt" count="0"/>
-                <line num="14" type="stmt" count="0"/>
-                <line num="16" type="method" name="direct" visibility="public" complexity="1" crap="2.00" count="0"/>
-                <line num="17" type="stmt" count="0"/>
-                <line num="18" type="stmt" count="0"/>
-                <line num="19" type="stmt" count="0"/>
-                <metrics loc="20" ncloc="16" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="8" coveredelements="0"/>
-            </file>
-            <file name="/home/vagrant/csgo-server-api-laravel/src/InvalidAddressException.php">
-                <class name="hugojf\CsgoServerApi\InvalidAddressException" namespace="hugojf\CsgoServerApi">
-                    <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-                </class>
-                <metrics loc="9" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-            </file>
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Providers/PackageServiceProvider.php">
-                <class name="hugojf\CsgoServerApi\PackageServiceProvider" namespace="hugojf\CsgoServerApi">
-                    <metrics complexity="3" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="5" elements="10" coveredelements="6"/>
-                </class>
-                <line num="14" type="method" name="register" visibility="public" complexity="1" crap="1.04" count="11"/>
-                <line num="17" type="stmt" count="0"/>
-                <line num="18" type="stmt" count="11"/>
-                <line num="19" type="stmt" count="11"/>
-                <line num="24" type="method" name="boot" visibility="public" complexity="1" crap="1" count="11"/>
-                <line num="27" type="stmt" count="11"/>
-                <line num="28" type="stmt" count="11"/>
-                <line num="30" type="stmt" count="11"/>
-                <line num="35" type="method" name="provides" visibility="public" complexity="1" crap="2.00" count="0"/>
-                <line num="37" type="stmt" count="0"/>
-                <metrics loc="39" ncloc="28" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="5" elements="10" coveredelements="6"/>
-            </file>
-        </package>
-        <package name="hugojf\CsgoServerApi\Facades">
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Facades/CsgoApi.php">
-                <class name="hugojf\CsgoServerApi\Facades\CsgoApi" namespace="hugojf\CsgoServerApi\Facades">
-                    <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
-                </class>
-                <line num="10" type="method" name="getFacadeAccessor" visibility="protected" complexity="1" crap="2.00" count="0"/>
-                <line num="11" type="stmt" count="0"/>
-                <line num="12" type="stmt" count="0"/>
-                <line num="13" type="stmt" count="0"/>
-                <metrics loc="13" ncloc="10" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
-            </file>
-        </package>
-        <package name="hugojf\CsgoServerApi\Traits">
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Traits/HandlesCommandList.php">
-                <class name="HandlesCommandList" namespace="hugojf\CsgoServerApi\Traits">
-                    <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
-                </class>
-                <line num="12" type="method" name="bootCommandList" visibility="public" complexity="1" crap="1" count="4"/>
-                <line num="14" type="stmt" count="4"/>
-                <line num="15" type="stmt" count="4"/>
-                <line num="17" type="method" name="addCommand" visibility="public" complexity="1" crap="1" count="4"/>
-                <line num="19" type="stmt" count="4"/>
-                <line num="21" type="stmt" count="4"/>
-                <metrics loc="22" ncloc="21" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
-            </file>
-            <file name="/home/vagrant/csgo-server-api-laravel/src/Traits/HandlesServerList.php">
-                <class name="HandlesServerList" namespace="hugojf\CsgoServerApi\Traits">
-                    <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
-                </class>
-                <line num="12" type="method" name="bootServerList" visibility="public" complexity="1" crap="1" count="2"/>
-                <line num="14" type="stmt" count="2"/>
-                <line num="15" type="stmt" count="2"/>
-                <line num="17" type="method" name="addServer" visibility="public" complexity="1" crap="1" count="2"/>
-                <line num="19" type="stmt" count="2"/>
-                <line num="21" type="stmt" count="2"/>
-                <metrics loc="22" ncloc="21" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
-            </file>
-        </package>
-        <file name="/home/vagrant/csgo-server-api-laravel/src/config/csgo-api.php">
-            <line num="3" type="stmt" count="0"/>
-            <line num="4" type="stmt" count="0"/>
-            <line num="5" type="stmt" count="0"/>
-            <line num="6" type="stmt" count="0"/>
-            <metrics loc="5" ncloc="5" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="3" coveredelements="0"/>
-        </file>
-        <metrics files="21" loc="598" ncloc="493" classes="17" methods="43" coveredmethods="22" conditionals="0" coveredconditionals="0" statements="121" coveredstatements="67" elements="164" coveredelements="89"/>
-    </project>
+<coverage generated="1572841949">
+  <project timestamp="1572841949">
+    <package name="hugojf\CsgoServerApi\Classes">
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Api.php">
+        <class name="hugojf\CsgoServerApi\Classes\Api" namespace="hugojf\CsgoServerApi\Classes">
+          <metrics complexity="6" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="26" coveredelements="26"/>
+        </class>
+        <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="15" type="stmt" count="2"/>
+        <line num="16" type="stmt" count="2"/>
+        <line num="17" type="stmt" count="2"/>
+        <line num="27" type="method" name="send" visibility="public" complexity="2" crap="2" count="1"/>
+        <line num="29" type="stmt" count="1"/>
+        <line num="30" type="stmt" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="1"/>
+        <line num="37" type="stmt" count="1"/>
+        <line num="39" type="stmt" count="1"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="53" type="method" name="sendToAll" visibility="public" complexity="2" crap="2" count="1"/>
+        <line num="55" type="stmt" count="1"/>
+        <line num="56" type="stmt" count="1"/>
+        <line num="57" type="stmt" count="1"/>
+        <line num="58" type="stmt" count="1"/>
+        <line num="61" type="stmt" count="1"/>
+        <line num="63" type="stmt" count="1"/>
+        <line num="65" type="stmt" count="1"/>
+        <line num="67" type="stmt" count="1"/>
+        <line num="75" type="method" name="processResponse" visibility="protected" complexity="1" crap="1" count="2"/>
+        <line num="77" type="stmt" count="2"/>
+        <metrics loc="78" ncloc="56" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="26" coveredelements="26"/>
+      </file>
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Command.php">
+        <class name="hugojf\CsgoServerApi\Classes\Command" namespace="hugojf\CsgoServerApi\Classes">
+          <metrics complexity="5" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="13" coveredelements="13"/>
+        </class>
+        <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="22" type="stmt" count="8"/>
+        <line num="23" type="stmt" count="8"/>
+        <line num="24" type="stmt" count="8"/>
+        <line num="25" type="stmt" count="8"/>
+        <line num="27" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="29" type="stmt" count="6"/>
+        <line num="35" type="method" name="getCommand" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="37" type="stmt" count="7"/>
+        <line num="43" type="method" name="getDelay" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="45" type="stmt" count="2"/>
+        <line num="51" type="method" name="getWait" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="53" type="stmt" count="2"/>
+        <metrics loc="54" ncloc="36" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="13" coveredelements="13"/>
+      </file>
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Server.php">
+        <class name="hugojf\CsgoServerApi\Classes\Server" namespace="hugojf\CsgoServerApi\Classes">
+          <metrics complexity="8" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="22" coveredelements="22"/>
+        </class>
+        <line num="20" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="8"/>
+        <line num="22" type="stmt" count="8"/>
+        <line num="23" type="stmt" count="2"/>
+        <line num="25" type="stmt" count="7"/>
+        <line num="26" type="stmt" count="7"/>
+        <line num="28" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="30" type="stmt" count="4"/>
+        <line num="39" type="method" name="fromIpAndPort" visibility="private" complexity="1" crap="1" count="2"/>
+        <line num="41" type="stmt" count="2"/>
+        <line num="42" type="stmt" count="2"/>
+        <line num="43" type="stmt" count="2"/>
+        <line num="45" type="method" name="fromAddress" visibility="private" complexity="2" crap="2" count="7"/>
+        <line num="47" type="stmt" count="7"/>
+        <line num="49" type="stmt" count="7"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="52" type="stmt" count="6"/>
+        <line num="53" type="stmt" count="6"/>
+        <line num="54" type="stmt" count="6"/>
+        <line num="59" type="method" name="getIp" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="61" type="stmt" count="3"/>
+        <line num="67" type="method" name="getPort" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="69" type="stmt" count="3"/>
+        <metrics loc="71" ncloc="51" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="22" coveredelements="22"/>
+      </file>
+    </package>
+    <package name="hugojf\CsgoServerApi\Classes\Lists">
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Lists/BaseList.php">
+        <class name="hugojf\CsgoServerApi\Classes\Lists\BaseList" namespace="hugojf\CsgoServerApi\Classes\Lists">
+          <metrics complexity="9" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="13" coveredelements="13"/>
+        </class>
+        <line num="15" type="method" name="addItem" visibility="public" complexity="7" crap="7" count="7"/>
+        <line num="18" type="stmt" count="7"/>
+        <line num="19" type="stmt" count="6"/>
+        <line num="24" type="stmt" count="7"/>
+        <line num="25" type="stmt" count="4"/>
+        <line num="28" type="stmt" count="7"/>
+        <line num="29" type="stmt" count="7"/>
+        <line num="31" type="stmt" count="2"/>
+        <line num="32" type="stmt" count="7"/>
+        <line num="35" type="stmt" count="7"/>
+        <line num="37" type="stmt" count="7"/>
+        <line num="40" type="method" name="getList" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="42" type="stmt" count="7"/>
+        <metrics loc="43" ncloc="33" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="13" coveredelements="13"/>
+      </file>
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Lists/CommandList.php">
+        <class name="hugojf\CsgoServerApi\Classes\Lists\CommandList" namespace="hugojf\CsgoServerApi\Classes\Lists">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        </class>
+        <line num="16" type="method" name="buildItem" visibility="protected" complexity="1" crap="1" count="1"/>
+        <line num="18" type="stmt" count="1"/>
+        <metrics loc="19" ncloc="14" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </file>
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Lists/ServerList.php">
+        <class name="hugojf\CsgoServerApi\Classes\Lists\ServerList" namespace="hugojf\CsgoServerApi\Classes\Lists">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        </class>
+        <line num="18" type="method" name="buildItem" visibility="protected" complexity="1" crap="1" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <metrics loc="21" ncloc="15" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </file>
+    </package>
+    <package name="hugojf\CsgoServerApi\Classes\Senders">
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Senders/BaseSender.php">
+        <class name="hugojf\CsgoServerApi\Classes\Senders\BaseSender" namespace="hugojf\CsgoServerApi\Classes\Senders">
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+        </class>
+        <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="19" type="stmt" count="5"/>
+        <line num="20" type="stmt" count="5"/>
+        <line num="21" type="stmt" count="5"/>
+        <metrics loc="23" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+      </file>
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Senders/BroadcastSender.php">
+        <class name="hugojf\CsgoServerApi\Classes\Senders\BroadcastSender" namespace="hugojf\CsgoServerApi\Classes\Senders">
+          <metrics complexity="6" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="15" coveredelements="15"/>
+        </class>
+        <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="16" type="stmt" count="3"/>
+        <line num="17" type="stmt" count="3"/>
+        <line num="18" type="stmt" count="3"/>
+        <line num="20" type="method" name="send" visibility="public" complexity="2" crap="2" count="3"/>
+        <line num="22" type="stmt" count="3"/>
+        <line num="23" type="stmt" count="3"/>
+        <line num="24" type="stmt" count="3"/>
+        <line num="27" type="stmt" count="2"/>
+        <line num="30" type="method" name="handleResponse" visibility="protected" complexity="3" crap="3" count="3"/>
+        <line num="32" type="stmt" count="3"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="35" type="stmt" count="2"/>
+        <line num="36" type="stmt" count="2"/>
+        <line num="38" type="stmt" count="2"/>
+        <metrics loc="38" ncloc="38" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="15" coveredelements="15"/>
+      </file>
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Senders/DirectSender.php">
+        <class name="hugojf\CsgoServerApi\Classes\Senders\DirectSender" namespace="hugojf\CsgoServerApi\Classes\Senders">
+          <metrics complexity="6" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="16" coveredelements="16"/>
+        </class>
+        <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="18" type="stmt" count="2"/>
+        <line num="20" type="stmt" count="2"/>
+        <line num="21" type="stmt" count="2"/>
+        <line num="22" type="stmt" count="2"/>
+        <line num="24" type="method" name="send" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="26" type="stmt" count="2"/>
+        <line num="27" type="stmt" count="2"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="33" type="method" name="executeOnServers" visibility="protected" complexity="2" crap="2" count="2"/>
+        <line num="35" type="stmt" count="2"/>
+        <line num="36" type="stmt" count="2"/>
+        <line num="37" type="stmt" count="2"/>
+        <line num="39" type="stmt" count="2"/>
+        <line num="47" type="method" name="execute" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="49" type="stmt" count="2"/>
+        <metrics loc="50" ncloc="44" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="16" coveredelements="16"/>
+      </file>
+    </package>
+    <package name="hugojf\CsgoServerApi\Classes\Summaries">
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Summaries/ByCommandSummary.php">
+        <class name="hugojf\CsgoServerApi\Classes\Summaries\ByCommandSummary" namespace="hugojf\CsgoServerApi\Classes\Summaries">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
+        </class>
+        <line num="11" type="method" name="attach" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="13" type="stmt" count="2"/>
+        <line num="14" type="stmt" count="2"/>
+        <line num="16" type="method" name="getSummary" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="18" type="stmt" count="2"/>
+        <metrics loc="19" ncloc="19" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
+      </file>
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Classes/Summaries/ByServerSummary.php">
+        <class name="hugojf\CsgoServerApi\Classes\Summaries\ByServerSummary" namespace="hugojf\CsgoServerApi\Classes\Summaries">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
+        </class>
+        <line num="11" type="method" name="attach" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="13" type="stmt" count="4"/>
+        <line num="14" type="stmt" count="4"/>
+        <line num="16" type="method" name="getSummary" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="18" type="stmt" count="4"/>
+        <metrics loc="19" ncloc="19" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
+      </file>
+    </package>
+    <file name="/home/vagrant/csgo-server-api-laravel/src/Contracts/CommandExecutor.php">
+      <metrics loc="14" ncloc="14" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/vagrant/csgo-server-api-laravel/src/Contracts/Summary.php">
+      <metrics loc="9" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="hugojf\CsgoServerApi">
+      <file name="/home/vagrant/csgo-server-api-laravel/src/CsgoApi.php">
+        <class name="hugojf\CsgoServerApi\CsgoApi" namespace="hugojf\CsgoServerApi">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+        </class>
+        <line num="10" type="method" name="broadcast" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="12" type="stmt" count="1"/>
+        <line num="15" type="method" name="direct" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="17" type="stmt" count="1"/>
+        <metrics loc="18" ncloc="18" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+      </file>
+      <file name="/home/vagrant/csgo-server-api-laravel/src/CsgoApiService.php">
+        <class name="hugojf\CsgoServerApi\CsgoApiService" namespace="hugojf\CsgoServerApi">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+        </class>
+        <line num="11" type="method" name="broadcast" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="13" type="stmt" count="1"/>
+        <line num="16" type="method" name="direct" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="18" type="stmt" count="1"/>
+        <metrics loc="20" ncloc="16" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+      </file>
+      <file name="/home/vagrant/csgo-server-api-laravel/src/InvalidAddressException.php">
+        <class name="hugojf\CsgoServerApi\InvalidAddressException" namespace="hugojf\CsgoServerApi">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="9" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="hugojf\CsgoServerApi\Facades">
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Facades/CsgoApi.php">
+        <class name="hugojf\CsgoServerApi\Facades\CsgoApi" namespace="hugojf\CsgoServerApi\Facades">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        </class>
+        <line num="10" type="method" name="getFacadeAccessor" visibility="protected" complexity="1" crap="1" count="2"/>
+        <line num="12" type="stmt" count="2"/>
+        <metrics loc="13" ncloc="10" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </file>
+    </package>
+    <package name="hugojf\CsgoServerApi\Traits">
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Traits/HandlesCommandList.php">
+        <class name="HandlesCommandList" namespace="hugojf\CsgoServerApi\Traits">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+        </class>
+        <line num="12" type="method" name="bootCommandList" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="14" type="stmt" count="5"/>
+        <line num="15" type="stmt" count="5"/>
+        <line num="17" type="method" name="addCommand" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="19" type="stmt" count="5"/>
+        <line num="21" type="stmt" count="5"/>
+        <metrics loc="22" ncloc="21" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+      </file>
+      <file name="/home/vagrant/csgo-server-api-laravel/src/Traits/HandlesServerList.php">
+        <class name="HandlesServerList" namespace="hugojf\CsgoServerApi\Traits">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+        </class>
+        <line num="12" type="method" name="bootServerList" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="14" type="stmt" count="2"/>
+        <line num="15" type="stmt" count="2"/>
+        <line num="17" type="method" name="addServer" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="19" type="stmt" count="2"/>
+        <line num="21" type="stmt" count="2"/>
+        <metrics loc="22" ncloc="21" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
+      </file>
+    </package>
+    <metrics files="19" loc="562" ncloc="464" classes="16" methods="40" coveredmethods="40" conditionals="0" coveredconditionals="0" statements="105" coveredstatements="105" elements="145" coveredelements="145"/>
+  </project>
 </coverage>
