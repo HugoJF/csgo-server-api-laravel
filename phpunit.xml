@@ -21,8 +21,12 @@
         </whitelist>
     </filter>
     <testsuites>
-        <testsuite name="Optimus\LaravelBoilerplate Test Suite">
-            <directory suffix="ExecTest.php">./tests/</directory>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit/</directory>
+        </testsuite>
+
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
     </testsuites>
     <php>

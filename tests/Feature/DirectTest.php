@@ -1,0 +1,41 @@
+<?php
+
+namespace hugojf\CsgoServerApi\Tests\Feature;
+
+use hugojf\CsgoServerApi\Classes\Command;
+use hugojf\CsgoServerApi\Classes\Server;
+use hugojf\CsgoServerApi\Facades\CsgoApi;
+use Ixudra\Curl\Builder;
+use Ixudra\Curl\Facades\Curl;
+use Mockery;
+
+class DirectTest
+{
+	public function testFacadeDirectMethod()
+	{
+		$builder = Mockery::mock(Builder::class)->makePartial();
+
+		$builder->shouldReceive('get')->once()->andReturn(['error' => false, 'response' => 'response-1']);
+		$builder->shouldReceive('get')->once()->andReturn(['error' => false, 'response' => 'response-2']);
+
+		Curl::shouldReceive('to')->twice()->andReturn($builder);
+
+		$response = CsgoApi::direct()->addCommand([
+			new Command('stats', 1500, false),
+			new Command('status', 1500, false),
+		])->addServer(
+			new Server('177.54.150.15:27001')
+		)->send();
+
+		$expected = [
+			"stats"  => [
+				"177.54.150.15:27001" => "response-1",
+			],
+			"status" => [
+				"177.54.150.15:27001" => "response-2",
+			],
+		];
+
+		$this->assertEquals($expected, $response);
+	}
+}
