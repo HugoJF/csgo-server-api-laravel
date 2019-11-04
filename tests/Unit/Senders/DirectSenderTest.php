@@ -11,7 +11,27 @@ use hugojf\CsgoServerApi\Tests\Base;
 
 class DirectSenderTest extends Base
 {
-	public function test_direct_sender()
+	public function test_direct_sender_by_add_server()
+	{
+		$this->execute_direct_sender_by_method_name('addServer');
+	}
+
+	public function test_direct_sender_by_add_servers()
+	{
+		$this->execute_direct_sender_by_method_name('addServers');
+	}
+
+	public function test_direct_sender_by_server()
+	{
+		$this->execute_direct_sender_by_method_name('server');
+	}
+
+	public function test_direct_sender_by_servers()
+	{
+		$this->execute_direct_sender_by_method_name('servers');
+	}
+
+	public function execute_direct_sender_by_method_name($method)
 	{
 		$this->mock(Api::class, function ($mock) {
 			$mock->shouldReceive('send')->once()->andReturn('status-1');
@@ -31,8 +51,8 @@ class DirectSenderTest extends Base
 		$direct->addCommand($command1);
 		$direct->addCommand($command2);
 
-		$direct->addServer($server1);
-		$direct->addServer($server2);
+		$direct->$method($server1);
+		$direct->$method($server2);
 
 		$summary = $direct->send();
 

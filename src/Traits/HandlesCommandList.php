@@ -14,10 +14,25 @@ trait HandlesCommandList
 		$this->commands = new CommandList();
 	}
 
-	public function addCommand($command)
+	public function addCommands($commands)
 	{
-		$this->commands->addItem($command);
+		$this->commands->addItem($commands);
 
 		return $this;
+	}
+
+	public function addCommand($command)
+	{
+		return $this->addCommands($command);
+	}
+
+	public function commands($commands)
+	{
+		return $this->addCommands($commands);
+	}
+
+	public function command($commands)
+	{
+		return $this->addCommands($commands);
 	}
 }

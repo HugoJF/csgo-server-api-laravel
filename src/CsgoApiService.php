@@ -11,9 +11,19 @@ use hugojf\CsgoServerApi\Classes\Senders\DirectSender;
  */
 class CsgoApiService
 {
+	public static function all()
+	{
+		return static::broadcast();
+	}
+
 	public static function broadcast()
 	{
 		return new BroadcastSender();
+	}
+
+	public static function to()
+	{
+		return static::direct();
 	}
 
 	public static function direct()

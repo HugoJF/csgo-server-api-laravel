@@ -12,7 +12,17 @@ use Mockery;
 
 class DirectTest extends Base
 {
-	public function test_facade_direct_method()
+	public function test_direct_method()
+	{
+		$this->execute_facade_method('direct');
+	}
+
+	public function test_to_method()
+	{
+		$this->execute_facade_method('to');
+	}
+
+	protected function execute_facade_method($method)
 	{
 		$builder = Mockery::mock(Builder::class)->makePartial();
 
@@ -21,7 +31,7 @@ class DirectTest extends Base
 
 		Curl::shouldReceive('to')->twice()->andReturn($builder);
 
-		$response = CsgoApi::direct()->addCommand([
+		$response = CsgoApi::$method()->addCommand([
 			new Command('stats', 1500, false),
 			new Command('status', 1500, false),
 		])->addServer(

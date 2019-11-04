@@ -11,7 +11,16 @@ use Mockery;
 
 class BroadcastTest extends Base
 {
-	public function test_facade_broadcast_method()
+	public function test_broadcast_method()
+	{
+		$this->execute_facade_method('broadcast');
+	}
+	public function test_all_method()
+	{
+		$this->execute_facade_method('all');
+	}
+
+	protected function execute_facade_method($method)
 	{
 		$builder = Mockery::mock(Builder::class)->makePartial();
 
@@ -26,7 +35,7 @@ class BroadcastTest extends Base
 
 		Curl::shouldReceive('to')->twice()->andReturn($builder);
 
-		$response = CsgoApi::broadcast()->addCommand([
+		$response = CsgoApi::$method()->addCommand([
 			new Command('stats', 1500, false),
 			new Command('status', 1500, false),
 		])->send();

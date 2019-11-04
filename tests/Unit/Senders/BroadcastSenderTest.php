@@ -11,7 +11,27 @@ use hugojf\CsgoServerApi\Tests\Base;
 
 class BroadcastSenderTest extends Base
 {
-	public function test_broadcast_sender()
+	public function test_broadcast_sender_by_add_command()
+	{
+		$this->execute_broadcast_sender_by_method_name('addCommand');
+	}
+
+	public function test_broadcast_sender_by_add_commands()
+	{
+		$this->execute_broadcast_sender_by_method_name('addCommands');
+	}
+
+	public function test_broadcast_sender_by_command()
+	{
+		$this->execute_broadcast_sender_by_method_name('command');
+	}
+
+	public function test_broadcast_sender_by_commands()
+	{
+		$this->execute_broadcast_sender_by_method_name('commands');
+	}
+
+	protected function execute_broadcast_sender_by_method_name($method)
 	{
 		$this->mock(Api::class, function ($mock) {
 			$mock->shouldReceive('sendToAll')->once()->andReturn([
@@ -28,8 +48,8 @@ class BroadcastSenderTest extends Base
 		$command1 = new Command('status', 2500, false);
 		$command2 = new Command('stats', 1000, true);
 
-		$broadcast->addCommand($command1);
-		$broadcast->addCommand($command2);
+		$broadcast->$method($command1);
+		$broadcast->$method($command2);
 
 		$summary = $broadcast->send();
 
