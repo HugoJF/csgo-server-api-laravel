@@ -4,6 +4,7 @@ namespace hugojf\CsgoServerApi;
 
 use hugojf\CsgoServerApi\Classes\Senders\BroadcastSender;
 use hugojf\CsgoServerApi\Classes\Senders\DirectSender;
+use hugojf\CsgoServerApi\Classes\Summaries\ByServerSummary;
 
 /**
  * Delete this folder and have fun
@@ -11,23 +12,23 @@ use hugojf\CsgoServerApi\Classes\Senders\DirectSender;
  */
 class CsgoApiService
 {
-	public static function all()
+	public static function all($summaryClass = ByServerSummary::class)
 	{
-		return static::broadcast();
+		return static::broadcast($summaryClass);
 	}
 
-	public static function broadcast()
+	public static function broadcast($summaryClass = ByServerSummary::class)
 	{
-		return new BroadcastSender();
+		return new BroadcastSender($summaryClass);
 	}
 
-	public static function to()
+	public static function to($summaryClass = ByServerSummary::class)
 	{
-		return static::direct();
+		return static::direct($summaryClass);
 	}
 
-	public static function direct()
+	public static function direct($summaryClass = ByServerSummary::class)
 	{
-		return new DirectSender();
+		return new DirectSender($summaryClass);
 	}
 }

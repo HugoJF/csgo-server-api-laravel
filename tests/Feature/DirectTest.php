@@ -4,6 +4,7 @@ namespace hugojf\CsgoServerApi\Tests\Feature;
 
 use hugojf\CsgoServerApi\Classes\Command;
 use hugojf\CsgoServerApi\Classes\Server;
+use hugojf\CsgoServerApi\Classes\Summaries\ByCommandSummary;
 use hugojf\CsgoServerApi\Facades\CsgoApi;
 use hugojf\CsgoServerApi\Tests\Base;
 use Ixudra\Curl\Builder;
@@ -31,7 +32,7 @@ class DirectTest extends Base
 
 		Curl::shouldReceive('to')->twice()->andReturn($builder);
 
-		$response = CsgoApi::$method()->addCommand([
+		$response = CsgoApi::$method(ByCommandSummary::class)->addCommand([
 			new Command('stats', 1500, false),
 			new Command('status', 1500, false),
 		])->addServer(
