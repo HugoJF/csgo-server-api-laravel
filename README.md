@@ -1,224 +1,234 @@
-# Laravel package boilerplate
-A simple boilerplate to create new laravel packages.
+# CS:GO Server API - Laravel package
+Laravel package to interface [CS:GO Server API](https://github.com/HugoJF/csgo-server-api).
 
+[![Build Status](https://travis-ci.org/HugoJF/csgo-server-api-laravel.svg?branch=v2.0)](https://travis-ci.org/HugoJF/csgo-server-api-laravel)
+[![Coverage Status](https://coveralls.io/repos/github/HugoJF/csgo-server-api-laravel/badge.svg?branch=v2.0)](https://coveralls.io/github/HugoJF/csgo-server-api-laravel?branch=v2.0)
+
+## How it works
+This package interfaces [my CS:GO API](https://github.com/HugoJF/csgo-server-api) main endpoints:
+
+`/send` which you can send a command, with a delay to a single server;
+
+`/sendAll` which you can send a command, with a delay to all servers controlled by the API;
+
+## Requirements
+* PHP 7.*
+    
+* [CS:GO Server API](https://github.com/HugoJF/csgo-server-api) installation
+  
 ## Installation
-Before to start you'll need to clone/download this package locally and then run from the terminal
-```bash
-$ composer install
-```
+Using Composer, run:
 
-This will install all the dependencies
+`composer require hugojf/csgo-server-api-laravel`
+  
+Publish config:
 
-## Composer.json
-
-Basic structure:
-
-```json
-{
-    "name": "namespace/package-name",
-    "description": "Package description",
-    "type": "library",
-    "version": "1.0.0-dev",
-    "license": "MIT",
-    "require": {
-        "laravel/framework": "^5.4.29"
-    },
-    "require-dev": {
-        "vlucas/phpdotenv": "^2.4",
-        "orchestra/testbench": "^3.4"
-    },
-    "autoload": {
-        "psr-4": {
-            "NamespaceHolder\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "NamespaceHolder\\Tests\\": "tests/"
-        }
-    }
-}
-```
-
-## Version
-According to the composer docs the [version](https://getcomposer.org/doc/04-schema.md#version):
-
->must follow the format of X.Y.Z or vX.Y.Z with an optional suffix of
->-dev, -patch (-p), -alpha (-a), -beta (-b) or -RC. The patch, alpha, beta and
->RC suffixes can also be followed by a number.
->Examples:
-> * 1.0.0
-> * 1.0.2
-> * 0.1.0
-> * 0.2.5
-> * 1.0.0-dev
-> * 1.0.0-alpha3
-> * 1.0.0-beta2
-> * 1.0.0-RC5
-> * v2.0.4-p1
-
-## Licence
-Is recommended to include a `.LICENCE` file to every new project. If you are working in a open source project, then you can pick one from the `extra` folder, move it to the root folder and rename the file to `.LICENCE`.
-
-Here you can find more info about how to [How to Choose an open source licence](https://choosealicense.com/)
-
-## Testing
-Create a new `phpunit.xml` file with:
-```bash
-$ cp phpunit.xml.dist phpunit.xml
-```
-
-This boilerplate uses [orchestral/testbench](https://github.com/orchestral/testbench) which is a "Laravel Testing Helper for Packages Development".
-
-After install the dependencies you can run all the tests by excecuting the follow command:
-
-```bash
-$ vendor/bin/phpunit
-```
-
-The output should look similar to this:
-
-```bash
-.                                                                  1 / 1 (100%)
-
-Time: 84 ms, Memory: 12.00MB
-
-OK (1 test, 1 assertion)
-
-
-```
-
-All the test files should be inside the `tests/` directory. Here is an example:
-
-```php
-
-<?php
-
-namespace NamespaceHolder\Tests\Unit;
-
-use NamespaceHolder\Tests\TestCase;
-
-class ExampleTest extends TestCase
-{
-    /** @test */
-    public function example_test_method()
-    {
-        $this->assertTrue(true);
-    }
-}
-
-```
-
-## Installing as a dependency on a laravel project
-Is very likely you'll need to install this package locally to test the integration. You can do so by adding the follow to the `composer.json` file in your laravel project.
-
-```json
-    "repositories": [
-        {
-            "type": "path",
-            "url": "path/to/package/folder"
-        }
-    ],
-```
-
-Then, in your laravel project root path you can just run:
-
-```bash
-$ composer require namespace/package-name
-```
+`php artisan vendor:publish --provider="hugojf\CsgoServerApi\Providers\PackageServiceProvider"`
 
 ## Configuration
-Since we are trying to building a new laravel package, is a good idea to pull all the configuration files inside the `/config` folder to keep a laravel-like folder structure.
+Any configuration can be modified inside `configs/csgo-api.php`
 
-## Bootstrapping
-Ideally you'll build this new package using [#TDD](https://en.wikipedia.org/wiki/Test-driven_development), so in order to load all the dependencies a bootstrap.php was added inside the tests directory with the escencial configuration.
+#### `CSGO_API_URL=http://my-csgo-server-api.com/`
+
+API server endpoint URL.
+
+#### `CSGO_API_KEY=abcdef123456`
+
+API server authentication key.
+
+## Usage
+
+#### Creating a command
+```php
+$myCommand = new Command($command, $delay = 0, $wait = false);
+```
+
+###### Parameters
+* `$command` is the command to be executed;
+* `$delay` tells how long the API should wait before sending the command;
+* `$wait` tells the API to wait for server response before responding the request.
+
+###### Examples
+```php
+// Get server stats
+$statsCommand = new Command('stats', 0,  true);
+
+// Kick bots
+$botsCommand = new Command('bot_kick');
+
+// Schedule say message
+$sayCommand = new Command('say Hi!', 30000)
+```
+
+#### Creating a server
+```php
+$myServer = new Server($address, $port);
+```
+
+###### Parameters
+* `$address` is the full address or just IP;
+* `$port` is the server port.
+
+###### Examples
+```php
+// Using IP and Port
+$server1 = new Server('177.54.150.15', 27001);
+
+// Using full address
+$server2 = new Server('177.54.150.15:27002');
+```
+
+
+#### Sending a list of commands to a list of servers
 
 ```php
-<?php
+// Sends `stats` and `status` to both servers
+//
+// You can replace `direct` with `to`, they are the same
+CsgoApi::direct(ByCommandSummary::class)->addCommand([
+    new Command('stats', 1500, true),
+    new Command('status', 1500, true),
+])->addServer(
+    new Server('177.54.150.15:27001'),
+    new Server('177.54.150.15:27002'),
+)->send();
 
-require __DIR__.'/../vendor/autoload.php';
-
-date_default_timezone_set('UTC');
-
+// Expected response:
+//  [
+//      "stats"  => [
+//          "177.54.150.15:27001" => "response-1",
+//          "177.54.150.15:27001" => "response-2",
+//      ],
+//      "status" => [
+//          "177.54.150.15:27001" => "response-3",
+//          "177.54.150.15:27001" => "response-4",
+//      ],
+//   ]
 ```
 
-## Service Provider
-With laravel is really easy to integrate or install any package. Is recomended to use a service provider if you want to bind things into laravel's service container.
-Here you can find more info about the [Laravel service providers](https://laravel.com/docs/5.4/packages#service-providers)
-
+#### Broadcasting a list of commands to all servers controlled by the API
 ```php
-<?php
-
-namespace NamespaceHolder\Providers;
-
-use Illuminate\Support\ServiceProvider;
-
-class PackageServiceProvider extends ServiceProvider
-{
-    /**
-     * Register bindings in the container.
-     */
-    public function register()
-    {
-        //
-    }
-
-    /**
-     * Perform post-registration booting of services.
-     */
-    public function boot()
-    {
-        // If you need to copy a config file to the laravel project
-        $this->publishes([
-            __DIR__.'/path/to/config/file.php' => config_path('file.php'),
-        ]);
-    }
-}
-
+// Sends `say` and `quit` to all servers
+//
+// You can replace `broadcast` with ``, they are the same
+CsgoApi::broadcast(ByCommandSummary::class)->addCommand([
+    new Command('say "Closing server for maintenance in 30 seconds', 0),
+    new Command('say "Closing server for maintenance in 15 seconds', 15000),
+    new Command('say "Closing server for maintenance in 5 seconds', 25000),
+    new Command('quit', 30000),
+])->send();
 ```
 
-## Laravel Package Auto discovering
-This is a new feature added recently to the laravel framework, now you can just install this package thru composer and is going to be automatically registered in the laravel project. To do so you need to add this section in the package `composer.json` file:
+#### Different ways you can add commands or servers
+In an attempt to avoid instantiating every server or command, you can use the following formats:
 
-```json
-    "extra": {
-        "laravel": {
-            "providers": [
-                "NamespaceHolder\\Providers\\PackageServiceProvider"
-            ]
-        }
-    }
+###### Servers
+```php
+// Creating a DirectSender
+$sender = CsgoApi::direct();
+
+// Using full Server object
+//
+// All 4 methods are identical, use what feels right
+$sender->addServer(new Server('177.54.150.15:27001'));
+$sender->addServers(new Server('177.54.150.15:27001'));
+$sender->server(new Server('177.54.150.15:27001'));
+$sender->servers(new Server('177.54.150.15:27001'));
+
+// Using list of Server objects
+$sender->addServer([
+    new Server('177.54.150.15:27001'),
+    new Server('177.54.150.15:27002'),
+]);
+
+// Using string address
+$sender->addServer('177.54.150.15:27002');
+
+// Using list of string addresses
+$sender->addServer([
+    '177.54.150.15:27001',
+    '177.54.150.15:27002',
+]);
+
+// Using IP and Port separately
+$sender->addServer('177.54.150.15', 27002);
+
+// Using list of IP and Ports
+$sender->addServer([
+    ['177.54.150.15', 27001],
+    ['177.54.150.15', 27002],
+]);
 ```
 
-And you can also register multiple alias with:
-```json
-    "extra": {
-        "laravel": {
-            "providers": [
-                "NamespaceHolder\\Providers\\PackageServiceProvider"
-            ]
-        },
-        "aliases": {
-            "Bar": "Foo\\Bar\\Facade"
-        }
-    }
+###### Commands
+```php
+// Creating a DirectSender
+$sender = CsgoApi::direct();
+
+// Using full Command object
+//
+// All 4 methods are identical, use what feels right
+$sender->addCommand(new Command('stats', 1000, false));
+$sender->addCommands(new Command('stats', 1000, false));
+$sender->command(new Command('stats', 1000, false));
+$sender->commands(new Command('stats', 1000, false));
+
+// Using list of Command objects
+$sender->addCommandItem([
+    new Command('stats', 1500, false),
+    new Command('status', 1500, false),
+]);
+
+// Using command parameters directly
+$sender->addCommand('stats', 1500, false);
+
+// Using list of command parameters
+$sender->addCommand([
+    ['stats', '1500', false],
+    ['status', '1500', false],
+]);
 ```
 
-## Git
-A .gitignore file is included with the most common and basic setup
+#### Changing summary class
+You can change the way responses are grouped by passing a new Summary class
+
+###### `ByCommandSummary::class`
+Groups responses by command first and then server after.
+```php
+// Example response 
+//  [
+//      "stats"  => [
+//          "177.54.150.15:27001" => "response-1",
+//          "177.54.150.15:27002" => "response-2",
+//      ],
+//      "status" => [
+//          "177.54.150.15:27001" => "response-3",
+//          "177.54.150.15:27002" => "response-4",
+//      ],
+//   ]
 ```
-vendor/
-composer.lock
-phpunit.xml
-node_modules/
-.idea
+
+###### `ByServerSummary::class`
+Groups responses by server first and then command after.
+```php
+// Example response
+//  [
+//      "177.54.150.15:27001"  => [
+//          "stats" => "response-1",
+//          "status" => "response-3",
+//      ],
+//      "177.54.150.15:27002" => [
+//          "stats" => "response-2",
+//          "status" => "response-4",
+//      ],
+//   ]
 ```
 
-## Make it yours!
-You just need to edit your personal info in the `composer.json` file, and run a quick search into the package folder to change the `NamespaceHolder` string by your custom namespace ant that's it.
+###### Example
+```php
+$directByCommandSender = CsGoApi::direct(ByCommandSummary::class);
+$directByServerSender = CsGoApi::direct(ByServerCummary::class);
 
-Have fun! 🎊
-
-## Credits
-
-Thanks to [Daniel Coulbourne](https://twitter.com/DCoulbourne) and [Matt Stauffer](https://twitter.com/stauffermatt). This package was inspired by their work on [tightenco/ziggy](https://github.com/tightenco/ziggy) a package to use Laravel routes in Javascript.
+$broadcastByCommandSender = CsGoApi::broadcast(ByCommandSummary::class);
+$broadcastByServerSender = CsGoApi::broadcast(ByServerCummary::class);
+```

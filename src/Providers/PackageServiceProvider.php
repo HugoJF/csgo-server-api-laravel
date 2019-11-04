@@ -1,6 +1,6 @@
 <?php
 
-namespace hugojf\CsgoServerApi    \Providers;
+namespace hugojf\CsgoServerApi\Providers;
 
 use hugojf\CsgoServerApi\CsgoApiService;
 use Illuminate\Support\ServiceProvider;
@@ -25,7 +25,7 @@ class PackageServiceProvider extends ServiceProvider
 	{
 		// Publish config files
 		$this->publishes([
-			__DIR__ . '/../config/config.php' => config_path('csgo-api.php'),
+			__DIR__ . '/../config/csgo-api.php' => config_path('csgo-api.php'),
 		]);
 	}
 

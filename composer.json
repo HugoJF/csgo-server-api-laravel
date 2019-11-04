@@ -4,12 +4,13 @@
     "type": "library",
     "require": {
         "laravel/framework": "^5.7",
-        "ixudra/curl": "6.*",
-        "vlucas/phpdotenv": "^2.2"
+        "ixudra/curl": "6.*"
     },
     "require-dev": {
+        "orchestra/testbench": "^3.7",
+        "vlucas/phpdotenv": "^2.2",
         "phpunit/phpunit": "^7.0",
-        "orchestra/testbench": "^3.7"
+        "php-coveralls/php-coveralls": "^2.1"
     },
     "license": "GPL-3.0-only",
     "authors": [
