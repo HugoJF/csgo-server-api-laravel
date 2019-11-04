@@ -14,25 +14,25 @@ trait HandlesServerList
 		$this->servers = new ServerList();
 	}
 
-	public function addServers($servers)
+	public function addServers(...$args)
 	{
-		$this->servers->addItem($servers);
+		$this->servers->addItem(...$args);
 
 		return $this;
 	}
 
-	public function servers($servers)
+	public function servers(...$args)
 	{
-		return $this->addServers($servers);
+		return $this->addServers(...$args);
 	}
 
-	public function addServer($server)
+	public function addServer(...$args)
 	{
-		return $this->addServers($server);
+		return $this->addServers(...$args);
 	}
 
-	public function server($server)
+	public function server(...$args)
 	{
-		return $this->addServers($server);
+		return $this->addServers(...$args);
 	}
 }
