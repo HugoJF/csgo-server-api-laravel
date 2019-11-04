@@ -2,6 +2,7 @@
 
 namespace hugojf\Tests;
 
+use Exception;
 use hugojf\CsgoServerApi\Classes\Api;
 use hugojf\CsgoServerApi\Classes\Command;
 use hugojf\CsgoServerApi\Classes\Senders\BroadcastSender;
@@ -9,7 +10,8 @@ use hugojf\CsgoServerApi\Classes\Senders\DirectSender;
 use hugojf\CsgoServerApi\Classes\Server;
 use hugojf\CsgoServerApi\Classes\Summaries\ByCommandSummary;
 use hugojf\CsgoServerApi\Classes\Summaries\ByServerSummary;
-use hugojf\CsgoServerApi    \Providers\PackageServiceProvider;
+use hugojf\CsgoServerApi\InvalidAddressException;
+use hugojf\CsgoServerApi\Providers\PackageServiceProvider;
 use Ixudra\Curl\CurlServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
@@ -27,22 +29,6 @@ class ExecTest extends OrchestraTestCase
 	{
 		$app['config']->set('csgo-api.url', 'http://csgo-server-api.denerdtv.com');
 		$app['config']->set('csgo-api.key', 'nice');
-	}
-
-	/** @test */
-	public function testRun()
-	{
-		//	dd(
-		//		CsgoApi::direct()->addServer([
-		//			'177.54.150.15:27001',
-		//			'177.54.150.15:27002',
-		//		])->addCommand([
-		//			new Command('echo 123', 0, false),
-		//			new Command('status', 0, true),
-		//		])->send()
-		//	);
-
-		$this->assertTrue(true);
 	}
 
 	public function testByServerSummary()
@@ -125,6 +111,33 @@ class ExecTest extends OrchestraTestCase
 		$this->assertEquals($expected, $summary);
 	}
 
+	public function testBroadcastSenderWillRaiseExceptionWhenInvalidResponseIsReturned()
+	{
+		$this->mock(Api::class, function ($mock) {
+			$mock->shouldReceive('sendToAll')->once()->andReturn(null);
+		});
+
+		$this->expectException(Exception::class);
+
+		$broadcast = new BroadcastSender(ByServerSummary::class);
+		$command = new Command('status', 2500, false);
+
+		$broadcast->addCommand($command);
+
+		$summary = $broadcast->send();
+
+		$expected = [
+			"177.54.150.15:27001" => [
+				"status" => "status-1",
+			],
+			"177.54.150.15:27002" => [
+				"status" => "status-2",
+			],
+		];
+
+		$this->assertEquals($expected, $summary);
+	}
+
 	public function testDirectSender()
 	{
 		$this->mock(Api::class, function ($mock) {
@@ -162,6 +175,36 @@ class ExecTest extends OrchestraTestCase
 		];
 
 		$this->assertEquals($expected, $summary);
+	}
+
+	public function testServerCanBeInstantiatedByAddress()
+	{
+		$address = '177.54.150.15:27001';
+
+		$server = new Server($address);
+
+		$this->assertEquals('177.54.150.15', $server->getIp());
+		$this->assertEquals('27001', $server->getPort());
+	}
+
+	public function testServerCanBeInstantiatedByIpAndPort()
+	{
+		$server = new Server('177.54.150.15', 27001);
+
+		$this->assertEquals('177.54.150.15', $server->getIp());
+		$this->assertEquals('27001', $server->getPort());
+	}
+
+	public function testServerWillRaiseExceptionOnInvalidAddress()
+	{
+		$this->expectException(InvalidAddressException::class);
+
+		$address = '177.54.150.15:123456';
+
+		$server = new Server($address);
+
+		$this->assertEquals('177.54.150.15', $server->getIp());
+		$this->assertEquals('27001', $server->getPort());
 	}
 
 }
