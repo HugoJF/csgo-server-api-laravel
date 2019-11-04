@@ -17,7 +17,7 @@ class Command
 	 */
 	protected $wait;
 
-	public function __construct($command, $delay = 1000, $wait = false)
+	public function __construct($command, $delay = 0, $wait = false)
 	{
 		$this->command = $command;
 		$this->delay = $delay;
