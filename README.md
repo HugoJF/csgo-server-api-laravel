@@ -194,9 +194,35 @@ You can change the way responses are grouped by passing a new Summary class
 
 ###### `ByCommandSummary::class`
 Groups responses by command first and then server after.
+```php
+// Example response 
+//  [
+//      "stats"  => [
+//          "177.54.150.15:27001" => "response-1",
+//          "177.54.150.15:27002" => "response-2",
+//      ],
+//      "status" => [
+//          "177.54.150.15:27001" => "response-3",
+//          "177.54.150.15:27002" => "response-4",
+//      ],
+//   ]
+```
 
 ###### `ByServerSummary::class`
 Groups responses by server first and then command after.
+```php
+// Example response
+//  [
+//      "177.54.150.15:27001"  => [
+//          "stats" => "response-1",
+//          "status" => "response-3",
+//      ],
+//      "177.54.150.15:27002" => [
+//          "stats" => "response-2",
+//          "status" => "response-4",
+//      ],
+//   ]
+```
 
 ###### Example
 ```php
