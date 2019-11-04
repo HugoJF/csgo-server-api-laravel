@@ -8,7 +8,7 @@ class ByServerSummary implements Summary
 {
 	protected $servers = [];
 
-	public function attach($command, $server, $response)
+	public function attach($command, $server, string $response)
 	{
 		$this->servers[ (string) $server ][ (string) $command ] = $response;
 	}
